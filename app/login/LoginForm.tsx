@@ -55,7 +55,7 @@ export default function LoginForm() {
       },
       label: "Host",
       type: "text",
-      placeholder: DEFAULT_HOST,
+      placeholder: host || "localhost",
       required: true
     },
     {
@@ -70,7 +70,7 @@ export default function LoginForm() {
       },
       label: "Port",
       type: "text",
-      placeholder: DEFAULT_PORT,
+      placeholder: port || "6379",
       required: true
     },
     {
