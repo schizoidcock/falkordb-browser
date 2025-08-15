@@ -9,11 +9,8 @@ console.log(`   Will apply basePath/assetPrefix: ${process.env.BEHIND_PROXY === 
 const nextConfig = {
   // Remove standalone output to fix Railway internal networking
   // output: 'standalone',
-  // Always use basePath in production (Railway), optional in development
-  ...((process.env.BEHIND_PROXY === 'true' || process.env.NODE_ENV === 'production') && { 
-    basePath: '/falkordb',
-    assetPrefix: '/falkordb'
-  }),
+  // Remove basePath/assetPrefix - FalkorDB service serves at root
+  // The proxy handles the /falkordb prefix, not the service itself
   reactStrictMode: true,
   images: {
     unoptimized: true
