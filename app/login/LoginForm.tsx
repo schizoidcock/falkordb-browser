@@ -9,9 +9,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import FormComponent, { Field } from "../components/FormComponent";
 import Dropzone from "../components/ui/Dropzone";
 
-const DEFAULT_HOST = "localhost";
-const DEFAULT_PORT = "6379";
-
 export default function LoginForm() {
   const router = useRouter();
   const [host, setHost] = useState("");
@@ -28,6 +25,21 @@ export default function LoginForm() {
     message: "Invalid credentials",
     show: false
   });
+
+  // Load default connection settings from environment
+  useEffect(() => {
+    fetch('/api/config')
+      .then(res => res.json())
+      .then(config => {
+        setHost(config.defaultHost);
+        setPort(config.defaultPort);
+      })
+      .catch(() => {
+        // Fallback to localhost if API fails
+        setHost('localhost');
+        setPort('6379');
+      });
+  }, []);
 
   const searchParams = useSearchParams();
   const fields: Field[] = [
