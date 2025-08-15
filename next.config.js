@@ -1,11 +1,4 @@
 /** @type {import('next').NextConfig} */
-
-// Debug environment variables
-console.log('🔍 FalkorDB Browser Next.js Config Debug:');
-console.log(`   BEHIND_PROXY = "${process.env.BEHIND_PROXY}"`);
-console.log(`   NODE_ENV = "${process.env.NODE_ENV}"`);
-console.log(`   Will apply basePath/assetPrefix: ${process.env.BEHIND_PROXY === 'true'}`);
-
 const nextConfig = {
   // Remove standalone output to fix Railway internal networking
   // output: 'standalone',
