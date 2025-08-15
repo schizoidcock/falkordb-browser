@@ -9,8 +9,8 @@ console.log(`   Will apply basePath/assetPrefix: ${process.env.BEHIND_PROXY === 
 const nextConfig = {
   // Remove standalone output to fix Railway internal networking
   // output: 'standalone',
-  // Only use basePath when BEHIND_PROXY environment variable is set
-  ...(process.env.BEHIND_PROXY === 'true' && { 
+  // Always use basePath in production (Railway), optional in development
+  ...((process.env.BEHIND_PROXY === 'true' || process.env.NODE_ENV === 'production') && { 
     basePath: '/falkordb',
     assetPrefix: '/falkordb'
   }),
