@@ -97,11 +97,17 @@ function generateTimeUUID() {
 
 const authOptions: AuthOptions = {
   // Configure NextAuth conditionally for proxy or direct access
-  ...(process.env.BEHIND_PROXY === 'true' && {
+  ...(process.env.BEHIND_PROXY === 'true' ? {
     basePath: '/falkordb',
     pages: {
       signIn: '/falkordb/login',
       error: '/falkordb/error',
+    },
+  } : {
+    // Direct access configuration (no proxy)
+    pages: {
+      signIn: '/login',
+      error: '/error',
     },
   }),
   providers: [
