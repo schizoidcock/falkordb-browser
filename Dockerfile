@@ -63,8 +63,7 @@ EXPOSE 8080
 
 ENV PORT 8080
 
-# Remove hardcoded hostname to allow Railway internal networking
-# ENV HOSTNAME "0.0.0.0"
+ENV HOSTNAME "0.0.0.0"
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
