@@ -104,7 +104,6 @@ const authOptions: AuthOptions = {
       error: '/falkordb/auth/error',
     },
   }),
-  trustHost: true,
   providers: [
     CredentialsProvider({
       name: "Credentials",
