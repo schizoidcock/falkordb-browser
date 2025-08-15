@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  // Only use basePath when BEHIND_PROXY environment variable is set
+  ...(process.env.BEHIND_PROXY === 'true' && { basePath: '/falkordb' }),
   reactStrictMode: true,
   images: {
     unoptimized: true
